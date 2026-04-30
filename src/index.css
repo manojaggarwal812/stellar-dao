@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root {
+    height: 100%;
+  }
+  body {
+    @apply bg-bg text-slate-100 antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    background-image:
+      radial-gradient(1200px 600px at 10% -10%, rgba(168,85,247,0.22), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, rgba(236,72,153,0.14), transparent 55%),
+      radial-gradient(800px 500px at 50% 120%, rgba(139,92,246,0.14), transparent 60%);
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-border bg-surface/60 backdrop-blur-xl p-5 shadow-xl;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 font-semibold transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed select-none;
+  }
+  .btn-primary {
+    @apply btn bg-gradient-to-r from-fuchsia-500 to-purple-600 text-white shadow-glow hover:brightness-110 active:scale-[0.98];
+  }
+  .btn-secondary {
+    @apply btn bg-slate-800/80 text-slate-100 border border-border hover:bg-slate-700/80;
+  }
+  .btn-ghost {
+    @apply btn text-slate-300 hover:bg-slate-800/60;
+  }
+  .btn-success {
+    @apply btn bg-gradient-to-r from-emerald-500 to-green-600 text-white hover:brightness-110 active:scale-[0.98];
+  }
+  .btn-danger {
+    @apply btn bg-gradient-to-r from-rose-500 to-red-600 text-white hover:brightness-110 active:scale-[0.98];
+  }
+  .input {
+    @apply w-full rounded-xl bg-slate-950/70 border border-border px-3 py-2.5 text-slate-100 placeholder:text-slate-500 outline-none focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/30;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full bg-fuchsia-500/10 border border-fuchsia-500/30 px-2.5 py-1 text-xs font-medium text-fuchsia-300;
+  }
+  .chip-green {
+    @apply inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 px-2.5 py-1 text-xs font-medium text-emerald-300;
+  }
+  .chip-red {
+    @apply inline-flex items-center gap-1.5 rounded-full bg-rose-500/10 border border-rose-500/30 px-2.5 py-1 text-xs font-medium text-rose-300;
+  }
+  .chip-amber {
+    @apply inline-flex items-center gap-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 px-2.5 py-1 text-xs font-medium text-amber-300;
+  }
+  .stat-label {
+    @apply text-[11px] uppercase tracking-wider text-slate-400 font-medium;
+  }
+  .stat-value {
+    @apply text-2xl font-bold text-white;
+  }
+}
