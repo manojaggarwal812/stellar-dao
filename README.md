@@ -2,7 +2,7 @@
 
 > **On-chain governance on Soroban** — propose, vote, and pay out treasury funds with verifiable, tamper-proof execution.
 
-[![CI](https://img.shields.io/github/actions/workflow/status/orenzoaniels-sys/stellar-dao/ci.yml?branch=main&label=CI&style=flat-square)](../../actions)
+[![CI](https://img.shields.io/github/actions/workflow/status/manojaggarwal812/stellar-dao/ci.yml?branch=main&label=CI&style=flat-square)](https://github.com/manojaggarwal812/stellar-dao/actions)
 ![Tests](https://img.shields.io/badge/tests-32%20passing-brightgreen?style=flat-square)
 ![Network](https://img.shields.io/badge/network-Soroban%20Testnet-purple?style=flat-square)
 ![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
