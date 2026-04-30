@@ -9,6 +9,10 @@
 
 A live, end-to-end DAO built for the Stellar Frontend Challenge (Green Belt). Three Soroban contracts — `gov_token` (VOTE), `treasury`, and `proposal_registry` — wire together so that **funds can only leave the treasury via a passing proposal**. The frontend is a React + Vite + Tailwind app with Stellar Wallets Kit.
 
+## 📱 Mobile UI
+
+![Stellar DAO mobile view](./docs/mobile-view.png)
+
 ---
 
 ## 🌐 Live deployment (Soroban Testnet)
