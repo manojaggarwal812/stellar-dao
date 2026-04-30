@@ -203,4 +203,4 @@ MIT.
 
 ---
 
-> Built as part of my [Stellar Frontend Belts](https://github.com/orenzoaniels-sys) journey — earlier projects: **Yellow Belt** (basic token UI), **Green Belt v1** (NFT marketplace), **Green Belt v2** (AMM DEX), and now **DAO governance**.
+> Built for the Stellar Frontend Challenge: DAO governance on Soroban with wallet-based voting and treasury execution.
