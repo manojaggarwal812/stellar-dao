@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  contracts:
+    name: Build + Test contracts
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: contracts
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32v1-none
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: contracts
+      - name: cargo fmt --check
+        run: cargo fmt --all -- --check
+        continue-on-error: true
+      - name: cargo test --workspace
+        run: cargo test --workspace --locked
+
+  frontend:
+    name: Build frontend
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Install
+        run: npm install --no-audit --no-fund
+      - name: Type-check
+        run: npx tsc --noEmit
+      - name: Build
+        run: npm run build
+        env:
+          VITE_NETWORK_PASSPHRASE: 'Test SDF Network ; September 2015'
+          VITE_RPC_URL: 'https://soroban-testnet.stellar.org'
+          VITE_GOV_TOKEN_ID: ${{ vars.VITE_GOV_TOKEN_ID }}
+          VITE_TREASURY_ID:  ${{ vars.VITE_TREASURY_ID }}
+          VITE_REGISTRY_ID:  ${{ vars.VITE_REGISTRY_ID }}
+      - name: Upload dist
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          retention-days: 7
+
+  summary:
+    name: Status
+    needs: [contracts, frontend]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - run: |
+          echo "## Stellar DAO CI" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- Contracts: ${{ needs.contracts.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Frontend:  ${{ needs.frontend.result }}" >> $GITHUB_STEP_SUMMARY

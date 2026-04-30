@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: stellar-dao
+    runtime: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_GOV_TOKEN_ID
+        sync: false
+      - key: VITE_TREASURY_ID
+        sync: false
+      - key: VITE_REGISTRY_ID
+        sync: false
+      - key: VITE_NETWORK_PASSPHRASE
+        value: "Test SDF Network ; September 2015"
+      - key: VITE_RPC_URL
+        value: https://soroban-testnet.stellar.org
