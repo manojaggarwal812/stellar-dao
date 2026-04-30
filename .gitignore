@@ -1,0 +1,24 @@
+# Node / Vite
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Rust / Soroban
+target/
+**/*.rs.bk
+Cargo.lock.bak
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+
+# Deploy artifacts
+deployed_ids.json
